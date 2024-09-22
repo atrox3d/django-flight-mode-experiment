@@ -5,13 +5,20 @@ import json
 #  from .models import
 from .helpers.testing import bordered
 
-class TestUrls(TestCase):
+class TestHomeUrl(TestCase):
+
+        # def setUp(self):
+        #     self.response = self.client.get('/')
+        #     self.assertEqual(self.response.status_code, 200)
 
         def test_home(self):
-            response = self.client.get('/')
-            bordered(f'{response.content.decode() = }')
-            bordered(f'{response.getvalue() = }')
+            self.response = self.client.get('/')
+            self.assertEqual(self.response.status_code, 200)
+        
+        def test_hello(self):
+            self.response = self.client.get('/')
+            self.assertEqual(self.response.status_code, 200)
 
-            self.assertEqual(response.status_code, 200)
-            self.assertContains(response, 'hello')
+            self.assertContains(self.response, 'hello')
+            self.assertEqual(self.response.content, b'hello')
         
