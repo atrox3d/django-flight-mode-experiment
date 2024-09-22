@@ -3,5 +3,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
+from .helpers.testing import bordered
+
 def home(request:HttpRequest):
     return HttpResponse('hello\n')
