@@ -1,5 +1,5 @@
 from django.test import TestCase
-
+import json
 # Create your tests here.
 
 #  from .models import
@@ -9,4 +9,7 @@ class TestUrls(TestCase):
 
     def test_home(self):
         response = self.client.get('/')
-        bordered(response)
+        bordered(f'{response.content.decode() = }')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'hello')
