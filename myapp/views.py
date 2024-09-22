@@ -6,7 +6,4 @@ from django.shortcuts import render
 from .helpers.testing import bordered
 
 def home(request:HttpRequest):
-    return HttpResponse(
-            'hello', 
-            content_type='text/plain'
-    )
+    return HttpResponse( 'hello')
