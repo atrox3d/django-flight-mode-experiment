@@ -15,18 +15,18 @@ class TestHomeUrl(TestCase):
             super().setUpClass()
             cls.home = '/'
             cls.prefixed = '/home/'
-            cls.urls = [cls.home, cls.prefixed] + 'fail these onws'.split()
+            cls.urls = [cls.home, cls.prefixed] \
+                        + 'fail1 fail2 fail3'.split()
 
         # def setUp(self):
             # self.home = '/'
             # self.prefix_home = '/home/'
 
         def test_subtest(self):
-             for url in self.urls:
-                  with self.subTest(url=url, msg='hellooo'):
+            for url in self.urls:
+                with self.subTest(url=url, msg=f'hellooo {url}'):
                     self.response = self.client.get(url)
                     self.assertEqual(self.response.status_code, 200)
-                       
 
         def test_home(self):
             self.response = self.client.get(self.home)
