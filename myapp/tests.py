@@ -7,20 +7,17 @@ from .helpers.testing import bordered
 
 class TestHomeUrl(TestCase):
         
-        # @classmethod
-        # def setUpClass(cls) -> None:
-
         @classmethod
         def setUpClass(cls) -> None:
+            # AttributeError: django.test.TestCase has no attribute 'cls_atomics'
             super().setUpClass()
+        
             cls.home = '/'
             cls.prefixed = '/home/'
-            cls.urls = [cls.home, cls.prefixed] \
-                        + 'fail1 fail2 fail3'.split()
-
-        # def setUp(self):
-            # self.home = '/'
-            # self.prefix_home = '/home/'
+            cls.urls = (
+                [cls.home, cls.prefixed]
+                + 'fail1 fail2 fail3'.split()
+            )
 
         def test_subtest(self):
             for url in self.urls:
