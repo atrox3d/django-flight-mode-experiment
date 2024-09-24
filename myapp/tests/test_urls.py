@@ -3,7 +3,7 @@ import json
 # Create your tests here.
 
 #  from .models import
-from .helpers.testing import bordered, enable_output, disable_output
+from ..helpers.testing import bordered, enable_output, disable_output
 
 disable_output()
 
