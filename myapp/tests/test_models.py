@@ -10,5 +10,4 @@ class MenuItemsTest(TestCase):
 
     def test_empty_menuitems(self):
         self.assertEqual(MenuItems.objects.count(), 0)
-    
-    
+
