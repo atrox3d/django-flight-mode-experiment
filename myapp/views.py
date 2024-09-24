@@ -7,7 +7,8 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from .helpers.testing import bordered
+from .helpers.testing import bordered, enable_output, disable_output
+
 
 def home(request:HttpRequest):
     return HttpResponse( 'hello')
@@ -56,4 +57,15 @@ def response_json(request:HttpRequest):
             default=lambda x: repr(x)
         )
     )
+
+def menuitems(response:HttpResponse, dish:str):
+    items = {
+        'pasta': 'pasta is blah blah blah',
+        'falafel': 'falafel is blah blah blah',
+        'cheesecake': 'cheesecake is blah blah blah',
+    }
+    description = items[dish]
+
+    return HttpResponse(f'<h2>dish</h2>{description}')
+
 
