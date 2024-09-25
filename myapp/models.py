@@ -21,4 +21,11 @@ class Menu(models.Model):
     )
 
     def __str__(self) -> str:
-        return f'{self.menu_item}'
+        return f'{self.menu_item} - {self.category_id.menu_category_name}: {self.price}'
+
+    def dict(self):
+        return dict(
+            menu_item=self.menu_item,
+            price=self.price,
+            category=self.category_id.menu_category_name,
+        )    

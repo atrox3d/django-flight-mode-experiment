@@ -8,5 +8,6 @@ urlpatterns = [
     path('requesttext', views.request_text, name='requesttext'),
     path('responsejson', views.response_json, name='responsejson'),
 
-    path('dishes/<str:dish>', views.menuitems, name='menuitems'),
+    path('dishes/<str:dish>', views.dishes, name='dishes'),
+    path('menu/<str:dish>', views.menu, name='menu'),
 ]
