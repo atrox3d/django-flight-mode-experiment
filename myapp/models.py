@@ -19,3 +19,6 @@ class Menu(models.Model):
         default=None,
         related_name='category_name'
     )
+
+    def __str__(self) -> str:
+        return f'{self.menu_item}'
