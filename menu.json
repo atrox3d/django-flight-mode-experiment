@@ -1,0 +1,17 @@
+[
+  {
+    "menu_item": "pasta",
+    "price": 10,
+    "category": "italian"
+  },
+  {
+    "menu_item": "zatziki",
+    "price": 11,
+    "category": "greek"
+  },
+  {
+    "menu_item": "falafel",
+    "price": 12,
+    "category": "turkish"
+  }
+]

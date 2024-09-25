@@ -1,20 +1,59 @@
+from ast import List
 from django.db.models import Model
+import json
+
 from .. import models
 
+def save_json_menu(
+        filename:str, menu:list[dict]
+) -> None:
+    with open(filename, 'w') as fp:
+        json.dump(menu, fp, indent=2)
 
-def delete_initial_data(*dbmodels:Model):
+def load_json_menu(
+        filename:str
+)-> list[dict]:
+    with open(filename, 'r') as fp:
+        return json.load(fp)
+
+def delete_initial_data(
+        *dbmodels:Model
+) -> None:
     for model in dbmodels:
         model.objects.all().delete()
     
-    create_menu_categories()
+def get_categories_from_menu(
+        menu:list[dict]
+) -> list[str]:
+    return list({menuitem['category'] for menuitem in menu})
 
-
-def create_menu_categories():
-    categories = 'italian greek turklish'.split()
-    [models.MenuCategory.objects.create(menu_category_name=cat) 
+def create_menu_categories(
+        *categories
+) -> list[models.MenuCategory]:
+    return [models.MenuCategory.objects.create(menu_category_name=cat) 
         for cat in categories]
 
-def create_initial_data(delete_existing=True):
+def create_menu_items(
+        menu:list[dict], 
+        # categories:list[models.MenuCategory]
+) -> list[models.Menu]:
+    items = []
+    for menuitem in menu:
+        category = models.MenuCategory.objects.filter(
+                menu_category_name=menuitem['category']
+            ).first()
+        item = models.Menu(
+            menu_item = menuitem['menu_item'],
+            price = menuitem['price'],
+            category_id = category
+        )
+        item.save()
+        items.append(item)
+    return items
+
+def create_initial_data(
+        json_menu_path:str='menu.json', delete_existing=True
+) -> None:
     if delete_existing:
         delete_initial_data(
             models.Menu, 
@@ -22,5 +61,9 @@ def create_initial_data(delete_existing=True):
             models.MenuItems
         )
     
-
-
+    # create_menu_categories(*'italian greek turklish'.split())
+    menu = load_json_menu(json_menu_path)
+    categories = get_categories_from_menu(menu)
+    menu_categories = create_menu_categories(*categories)
+    menu_items = create_menu_items(menu)
+    print(menu_items)
