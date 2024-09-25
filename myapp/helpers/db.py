@@ -61,9 +61,7 @@ def create_initial_data(
             models.MenuItems
         )
     
-    # create_menu_categories(*'italian greek turklish'.split())
     menu = load_json_menu(json_menu_path)
     categories = get_categories_from_menu(menu)
     menu_categories = create_menu_categories(*categories)
     menu_items = create_menu_items(menu)
-    print(menu_items)
