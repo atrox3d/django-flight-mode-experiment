@@ -5,17 +5,18 @@ from django.db.models import Model
 
 logger = logging.getLogger(__name__)
 
-def save_json_menu(
-        filename:str, menu:list[dict]
+def save_to_json(
+        filename:str, data:list[dict]
 ) -> None:
+    logger.info(f'saving data to {filename}')
     with open(filename, 'w') as fp:
-        json.dump(menu, fp, indent=2)
+        json.dump(data, fp, indent=2)
 
 
-def load_json_menu(
+def load_from_json(
         filename:str
 )-> list[dict]:
-    logger.info(f'loading menu from {filename}')
+    logger.info(f'loading data from {filename}')
     with open(filename, 'r') as fp:
         return json.load(fp)
 
