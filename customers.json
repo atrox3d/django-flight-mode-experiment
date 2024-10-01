@@ -1,0 +1,32 @@
+[
+  {
+    "name": "bob",
+    "reservation_day": "wednsday",
+    "seats": 6
+  },
+  {
+    "name": "steven",
+    "reservation_day": "saturday",
+    "seats": 8
+  },
+  {
+    "name": "james",
+    "reservation_day": "saturday",
+    "seats": 5
+  },
+  {
+    "name": "steven",
+    "reservation_day": "saturday",
+    "seats": 5
+  },
+  {
+    "name": "john",
+    "reservation_day": "tuesday",
+    "seats": 9
+  },
+  {
+    "name": "bob",
+    "reservation_day": "wednsday",
+    "seats": 6
+  }
+]

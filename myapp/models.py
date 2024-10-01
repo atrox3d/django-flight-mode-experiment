@@ -37,3 +37,10 @@ class Customer(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def dict(self):
+        return dict(
+            name=self.name, 
+            reservation_day=self.reservation_day,
+            seats=self.seats,
+        )

@@ -6,11 +6,13 @@ from django.db.models import Model
 logger = logging.getLogger(__name__)
 
 def save_to_json(
-        filename:str, data:list[dict]
+        filename:str, 
+        data:list[dict],
+        indent=2
 ) -> None:
     logger.info(f'saving data to {filename}')
     with open(filename, 'w') as fp:
-        json.dump(data, fp, indent=2)
+        json.dump(data, fp, indent=indent)
 
 
 def load_from_json(
