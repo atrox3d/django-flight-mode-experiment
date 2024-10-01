@@ -26,7 +26,7 @@ def create_initial_data(
     data = dbtools.load_from_json(json_menu_path)
     categories = menu.get_categories_from_menu(data)
     menu_categories = menu.create_menu_categories(*categories)
-    menu_items = menu.create_menu_items(data)
+    menu_items = menu.create_menu(data)
 
     data = dbtools.load_from_json(json_customers_path)
     customers = customer.create_customers(data)

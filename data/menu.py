@@ -17,7 +17,7 @@ def create_menu_categories(
     return [models.MenuCategory.objects.create(menu_category_name=cat)
         for cat in categories]
 
-def create_menu_items(
+def create_menu(
         menu:list[dict],
         # categories:list[models.MenuCategory]
 ) -> list[models.Menu]:
