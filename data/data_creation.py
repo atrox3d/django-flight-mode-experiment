@@ -12,10 +12,17 @@ logger = logging.getLogger(__name__)
 def create_initial_data(
         json_menu_path:str='data/menu.json', 
         json_customers_path:str='data/customers.json', 
-        delete_existing=True
+        reset_db=True,
+        delete_existing=True,
 ) -> None:
-    logger.info(f'{json_menu_path=}, {delete_existing=}')
+    logger.info(f'{json_menu_path=}, {json_customers_path=}, {delete_existing=}')
+
+    if reset_db:
+        logger.info(f'resetting db')
+        dbtools.reset_db()
+
     if delete_existing:
+        logger.info(f'deleting existing data')
         dbtools.delete_initial_data(
             models.Menu, 
             models.MenuCategory, 
