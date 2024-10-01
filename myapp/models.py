@@ -28,4 +28,12 @@ class Menu(models.Model):
             menu_item=self.menu_item,
             price=self.price,
             category=self.category_id.menu_category_name,
-        )    
+        )
+
+class Customer(models.Model):
+    name = models.CharField(max_length=200)
+    reservation_day = models.CharField(max_length=20)
+    seats = models.IntegerField()
+
+    def __str__(self) -> str:
+        return self.name
