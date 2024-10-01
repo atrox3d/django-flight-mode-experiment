@@ -10,8 +10,8 @@ from myapp import models
 logger = logging.getLogger(__name__)
 
 def create_initial_data(
-        json_menu_path:str='menu.json', 
-        json_customers_path:str='customers.json', 
+        json_menu_path:str='data/menu.json', 
+        json_customers_path:str='data/customers.json', 
         delete_existing=True
 ) -> None:
     logger.info(f'{json_menu_path=}, {delete_existing=}')

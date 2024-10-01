@@ -16,9 +16,7 @@ if __name__ == '__main__':
     django.setup()
 
     logger.info(f'importing myapp.helpers.db')
-    from data import main
+    from data import data_creation
 
     logger.info(f'calling create_initial_data')
-    main.create_initial_data()
-
-
+    data_creation.create_initial_data()
