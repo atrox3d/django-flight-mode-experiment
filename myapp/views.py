@@ -65,7 +65,10 @@ def menu(request:HttpRequest, dish:str):
 
     return JsonResponse(menuitem.dict())    # needs first
 
-def form_view(request):
+def form_view(request:HttpRequest):
+    if request.method == 'POST':
+        print(f'{request.POST = }')
+    
     form = InputForm()
     context = dict(form=form)
     return render(request, 'home.html', context=context)
