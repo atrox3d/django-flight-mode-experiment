@@ -6,6 +6,7 @@ from . import db
 from . import serializer
 from .modelcreation import menu
 from .modelcreation import customer
+from .modelcreation import generic
 
 from myapp import models
 
@@ -40,5 +41,5 @@ def create_initial_data(
     menu_items = menu.create_menu(data)
 
     data = serializer.load_from_json(json_customers_path)
-    customers = customer.create_customers(data)
+    customers = generic.create_objects(data, models.Customer)
 
