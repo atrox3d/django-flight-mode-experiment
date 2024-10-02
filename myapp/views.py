@@ -12,53 +12,46 @@ from django.core import serializers
 from . import models
 from .helpers.testing import bordered, enable_output, disable_output
 
+def request2dict(
+        request:HttpRequest, 
+        indent:int=2,
+        default:str=lambda x: repr(x)
+) -> dict:
+    return json.dumps(
+        vars(request).copy(),
+        indent=indent,
+        default=default
+        )
+
+JSON_DUMP_PARAMS = dict(
+            indent=2,
+            default=lambda x: repr(x)
+        )
 
 def home(request:HttpRequest):
     return HttpResponse( 'hello')
 
 def request_json(request:HttpRequest):
-    bordered(
-        json.dumps(
-            vars(request).copy(),
-            indent=2,
-            default=lambda x: repr(x)
-        )
-    )
+    bordered(request2dict(request))
     # return HttpResponse('ok')
     return JsonResponse(
         vars(request).copy(),
-        json_dumps_params=dict(
-            indent=2,
-            default=lambda x: repr(x)
-        )
+        json_dumps_params=JSON_DUMP_PARAMS
     )
 
 def request_text(request:HttpRequest):
     return HttpResponse(
-        json.dumps(
-            vars(request).copy(),
-            indent=2,
-            default=lambda x: repr(x)
-        ),
+        json.dumps(request2dict(request)),
         content_type='text/plain'
     )
 
 def response_json(request:HttpRequest):
     response = HttpResponse('the response')
-    bordered(
-        json.dumps(
-            vars(response).copy(),
-            indent=2,
-            default=lambda x: repr(x)
-        )
-    )
+    bordered(request2dict(response))
     # return HttpResponse('ok')
     return JsonResponse(
         vars(response).copy(),
-        json_dumps_params=dict(
-            indent=2,
-            default=lambda x: repr(x)
-        )
+        json_dumps_params=JSON_DUMP_PARAMS
     )
 
 def dishes(request:HttpRequest, dish:str):
