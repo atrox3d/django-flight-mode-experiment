@@ -6,7 +6,7 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.core import serializers
 
-from myapp.forms import InputForm
+from myapp.forms import InputForm, LogForm
 from myapp.helpers.testing import request2dict
 
 
@@ -73,5 +73,22 @@ def form_view(request:HttpRequest):
     context = dict(form=form)
     return render(request, 'home.html', context=context)
 
-
+def logger_view(request:HttpRequest):
+    if request.method == 'POST':
+        print(f'logger_view | POST: {request.POST = }')
+        form = LogForm(request.POST)
+        if form.is_valid():
+            print(f'logger_view | POST: saving')
+            form.save()
+        else:
+            print(f'logger_view | POST: INVALID')
+            print(form.errors.as_data()) # here you print errors to terminal
+            print(form.errors) # here you print errors to terminal
+    else:
+        print(f'logger_view | GET')
+        form = LogForm()
+    
+    context = dict(form=form)
+    return render(request, 'home.html', context=context)
+        
 

@@ -44,3 +44,8 @@ class Customer(models.Model):
             reservation_day=self.reservation_day,
             seats=self.seats,
         )
+
+class Logger(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    time_log = models.TimeField(help_text='enter exact time')
