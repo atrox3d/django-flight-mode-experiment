@@ -1,7 +1,7 @@
 import os
 import django
 import logging
-
+import sys
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,9 @@ if __name__ == '__main__':
     django.setup()
 
     logger.info(f'importing data.data_creation')
-    from data import data_creation
+    from fakedata import data_creation
 
     logger.info(f'calling create_initial_data')
     data_creation.create_initial_data()
+
+    print(sys.path)
