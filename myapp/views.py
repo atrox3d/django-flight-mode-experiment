@@ -6,6 +6,7 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.core import serializers
 
+from myapp.forms import InputForm
 from myapp.helpers.testing import request2dict
 
 
@@ -36,7 +37,6 @@ def request_text(request:HttpRequest):
 def response_json(request:HttpRequest):
     response = HttpResponse('the response')
     bordered(request2dict(response))
-    # return HttpResponse('ok')
     return JsonResponse(
         vars(response).copy(),
         json_dumps_params=JSON_DUMP_PARAMS
@@ -64,6 +64,11 @@ def menu(request:HttpRequest, dish:str):
     # return JsonResponse(menuitem.values().first())
 
     return JsonResponse(menuitem.dict())    # needs first
+
+def form_view(request):
+    form = InputForm()
+    context = dict(form=form)
+    return render(request, 'home.html', context=context)
 
 
 
