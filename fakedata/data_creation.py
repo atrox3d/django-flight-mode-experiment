@@ -1,7 +1,9 @@
 import logging
 from pathlib import Path
 
-from . import dbtools
+import fakedata.db
+
+from . import serializer
 from . import menu
 from . import customer
 
@@ -21,22 +23,22 @@ def create_initial_data(
 
     if reset_db:
         logger.info(f'resetting db')
-        dbtools.reset_db()
+        fakedata.db.reset_db()
 
     if delete_existing:
         logger.info(f'deleting existing data')
-        dbtools.delete_initial_data(
+        fakedata.db.delete_initial_data(
             models.Menu, 
             models.MenuCategory, 
             models.MenuItems,
             models.Customer
         )
     
-    data = dbtools.load_from_json(json_menu_path)
+    data = serializer.load_from_json(json_menu_path)
     categories = menu.get_categories_from_menu(data)
     menu_categories = menu.create_menu_categories(*categories)
     menu_items = menu.create_menu(data)
 
-    data = dbtools.load_from_json(json_customers_path)
+    data = serializer.load_from_json(json_customers_path)
     customers = customer.create_customers(data)
 
