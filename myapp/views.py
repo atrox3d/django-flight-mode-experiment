@@ -6,27 +6,15 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.core import serializers
 
+from myapp.helpers.testing import request2dict
+
 
 # Create your views here.
 
 from . import models
 from .helpers.testing import bordered, enable_output, disable_output
 
-def request2dict(
-        request:HttpRequest, 
-        indent:int=2,
-        default:str=lambda x: repr(x)
-) -> dict:
-    return json.dumps(
-        vars(request).copy(),
-        indent=indent,
-        default=default
-        )
-
-JSON_DUMP_PARAMS = dict(
-            indent=2,
-            default=lambda x: repr(x)
-        )
+JSON_DUMP_PARAMS = dict(indent=2, default=lambda x: repr(x))
 
 def home(request:HttpRequest):
     return HttpResponse( 'hello')
