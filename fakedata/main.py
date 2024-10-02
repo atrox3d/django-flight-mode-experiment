@@ -2,14 +2,21 @@ import os
 import django
 import logging
 import sys
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':  
 
     logging.basicConfig(
-        level=logging.DEBUG
+        level=logging.DEBUG,
+        format='%(levelname)s | %(message)s'
     )
+
+    logger.info(f'fix DJANGO_SETTINGS_MODULE import')
+    PROJECT_PATH = str(Path(__file__).parent.parent)
+    sys.path.insert(0, PROJECT_PATH)
+
     logger.info(f'setting DJANGO_SETTINGS_MODULE')
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'flightmode.settings')
 
@@ -21,5 +28,3 @@ if __name__ == '__main__':
 
     logger.info(f'calling create_initial_data')
     data_creation.create_initial_data()
-
-    print(sys.path)
