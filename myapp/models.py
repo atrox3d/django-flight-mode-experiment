@@ -49,3 +49,10 @@ class Logger(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     time_log = models.TimeField(help_text='enter exact time')
+
+    def dict(self):
+        return dict(
+            first_name=self.first_name, 
+            last_name=self.last_name, 
+            time_log=self.time_log, 
+        )
