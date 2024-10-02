@@ -11,11 +11,11 @@ from myapp import models
 
 logger = logging.getLogger(__name__)
 
-HERE = Path(__file__).parent.stem
+JSON = Path(__file__).parent / 'json'
 
 def create_initial_data(
-        json_menu_path:str=f'{HERE}/menu.json', 
-        json_customers_path:str=f'{HERE}/customers.json', 
+        json_menu_path:str=f'{JSON}/menu.json', 
+        json_customers_path:str=f'{JSON}/customers.json', 
         reset_db=True,
         delete_existing=True,
 ) -> None:
