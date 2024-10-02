@@ -1,11 +1,11 @@
 import logging
 from pathlib import Path
 
-import fakedata.db
 
+from . import db
 from . import serializer
-from . import menu
-from . import customer
+from .modelcreation import menu
+from .modelcreation import customer
 
 from myapp import models
 
@@ -23,11 +23,11 @@ def create_initial_data(
 
     if reset_db:
         logger.info(f'resetting db')
-        fakedata.db.reset_db()
+        db.reset_db()
 
     if delete_existing:
         logger.info(f'deleting existing data')
-        fakedata.db.delete_initial_data(
+        db.delete_initial_data(
             models.Menu, 
             models.MenuCategory, 
             models.MenuItems,
