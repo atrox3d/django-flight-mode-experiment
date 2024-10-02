@@ -20,6 +20,8 @@ def create_initial_data(
         reset_db=True,
         delete_existing=True,
 ) -> None:
+    ''' creates data into db from json files '''
+
     logger.info(f'{json_menu_path=}, {json_customers_path=}, {delete_existing=}')
 
     if reset_db:
