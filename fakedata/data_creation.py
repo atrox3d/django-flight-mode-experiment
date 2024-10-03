@@ -34,7 +34,8 @@ def create_initial_data(
             models.Menu, 
             models.MenuCategory, 
             models.MenuItems,
-            models.Customer
+            models.Customer,
+            models.Logger
         )
     
     data = serializer.load_from_json(json_menu_path)
