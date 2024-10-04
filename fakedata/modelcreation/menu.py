@@ -1,6 +1,6 @@
 import logging
 
-from myapp import models
+from myapp.models import Menu
 import myapp.models.MenuCategory
 
 logger = logging.getLogger(__name__)
@@ -24,14 +24,14 @@ def create_menu_categories(
 
 def create_menu(
         menu:list[dict],
-) -> list[models.Menu]:
+) -> list[Menu.Menu]:
     ''' creates Menu records using MEnuCategory records as foreign key '''
     items = []
     for menuitem in menu:
         category = myapp.models.MenuCategory.MenuCategory.objects.filter(
                 menu_category_name=menuitem['category']
             ).first()
-        item = models.Menu(
+        item = Menu.Menu(
             menu_item = menuitem['menu_item'],
             price = menuitem['price'],
             category_id = category

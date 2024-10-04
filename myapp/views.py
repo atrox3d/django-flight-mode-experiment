@@ -12,7 +12,7 @@ from myapp.helpers.testing import request2dict, bordered
 
 # Create your views here.
 
-from . import models
+from .models import Menu
 from .helpers.testing import bordered, enable_output, disable_output
 
 JSON_DUMP_PARAMS = dict(indent=2, default=lambda x: repr(x))
@@ -53,7 +53,7 @@ def dishes(request:HttpRequest, dish:str):
     return HttpResponse(f'<h2>dish</h2>{description}')
 
 def menu(request:HttpRequest, dish:str):
-    menuitem = models.Menu.objects.filter(menu_item=dish).first()
+    menuitem = Menu.Menu.objects.filter(menu_item=dish).first()
     bordered(menuitem)
     bordered(menuitem.fieldnames())
     bordered(menuitem.dict())

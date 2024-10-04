@@ -2,6 +2,7 @@ import logging
 import random
 
 from myapp import models
+import myapp.models.Menu
 
 logger = logging.getLogger(__name__)
 
@@ -10,7 +11,7 @@ names = 'james john mary steven bob george jeff'.split()
 
 def create_customers(
         customers:list[dict],
-) -> list[models.Menu]:
+) -> list[myapp.models.Menu.Menu]:
     items = []
     for customer in customers:
         item = models.Customer(
