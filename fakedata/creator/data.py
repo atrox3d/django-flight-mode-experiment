@@ -1,18 +1,18 @@
 import logging
 from pathlib import Path
 
-from . import db
-from . import loader
-from .creator import menu
-from .creator import customer
-from .creator import generic
+from .. import db
+from .. import loader
+from . import menu
+from . import customer
+from . import generic
 
 import myapp.models
 
 
 logger = logging.getLogger(__name__)
 
-JSON = Path(__file__).parent / 'json'
+JSON = Path(__file__).parent.parent / 'json'
 
 def create_initial_data(
         json_menu_path:str=f'{JSON}/menu.json', 
