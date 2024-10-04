@@ -1,11 +1,11 @@
 import logging
 from pathlib import Path
 
-import myapp.models.Customer
-import myapp.models.Menu
-import myapp.models.MenuCategory
-import myapp.models.MenuItems
-
+# import myapp.models.Customer
+# import myapp.models.Menu
+# import myapp.models.MenuCategory
+# import myapp.models.MenuItems
+# 
 
 from . import db
 from . import serializer
@@ -13,7 +13,9 @@ from .modelcreation import menu
 from .modelcreation import customer
 from .modelcreation import generic
 
-from myapp import models
+# from myapp import models
+import myapp.models
+
 
 logger = logging.getLogger(__name__)
 
@@ -36,11 +38,11 @@ def create_initial_data(
     if delete_existing:
         logger.info(f'deleting existing data')
         db.delete_initial_data(
-            myapp.models.Menu.Menu, 
-            myapp.models.MenuCategory.MenuCategory, 
-            myapp.models.MenuItems.MenuItems,
-            myapp.models.Customer.Customer,
-            models.Logger
+            myapp.models.Menu, 
+            myapp.models.MenuCategory, 
+            myapp.models.MenuItems,
+            myapp.models.Customer,
+            myapp.models.Logger
         )
     
     data = serializer.load_from_json(json_menu_path)
@@ -49,5 +51,5 @@ def create_initial_data(
     menu_items = menu.create_menu(data)
 
     data = serializer.load_from_json(json_customers_path)
-    customers = generic.create_objects(data, myapp.models.Customer.Customer)
+    customers = generic.create_objects(data, myapp.models.Customer)
 

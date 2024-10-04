@@ -1,8 +1,9 @@
 import logging
 import random
 
-from myapp.models import Customer
-import myapp.models.Menu
+# from myapp.models import Customer
+# import myapp.models.Menu
+import myapp.models
 
 logger = logging.getLogger(__name__)
 
@@ -11,10 +12,10 @@ names = 'james john mary steven bob george jeff'.split()
 
 def create_customers(
         customers:list[dict],
-) -> list[myapp.models.Menu.Menu]:
+) -> list[myapp.models.Menu]:
     items = []
     for customer in customers:
-        item = Customer.Customer(
+        item = myapp.models.Customer.Customer(
             name = customer['name'],
             reservation_day = customer['reservation_day'],
             seats = customer['seats']
