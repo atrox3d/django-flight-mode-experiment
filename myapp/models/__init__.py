@@ -1,10 +1,8 @@
 from django.db import models
 
+from myapp.models.menucategory import MenuCategory
 from myapp.models.dictmixin import DictMixin
 from myapp.models.menuitems import MenuItems
-
-class MenuCategory(models.Model, DictMixin):
-    menu_category_name = models.CharField(max_length=200)
 
 class Menu(models.Model, DictMixin):
     menu_item = models.CharField(max_length=200)

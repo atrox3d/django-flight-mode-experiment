@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 
+import myapp.models.MenuCategory
 import myapp.models.MenuItems
 
 
@@ -34,7 +35,7 @@ def create_initial_data(
         logger.info(f'deleting existing data')
         db.delete_initial_data(
             models.Menu, 
-            models.MenuCategory, 
+            myapp.models.MenuCategory.MenuCategory, 
             myapp.models.MenuItems.MenuItems,
             models.Customer,
             models.Logger
