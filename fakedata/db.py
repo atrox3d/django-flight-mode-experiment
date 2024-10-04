@@ -24,4 +24,4 @@ def reset_db(db_path='db.sqlite3'):
         Path(db_path).unlink()
 
     logger.info(f'migrating myapp')
-    call_command('migrate', 'myapp')
+    call_command('migrate')
