@@ -1,6 +1,6 @@
 from django.core.management import call_command
 from pathlib import Path
-from fakedata.serializer import logger
+from fakedata.loader import logger
 
 
 from django.db.models import Model

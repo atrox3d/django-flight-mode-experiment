@@ -5,9 +5,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 def save_to_json(
-        filename:str, 
-        data:list[dict],
-        indent=2
+    filename:str, 
+    data:list[dict],
+    indent=2
 ) -> None:
     ''' save list of dicts to json '''
 
@@ -17,7 +17,7 @@ def save_to_json(
 
 
 def load_from_json(
-        filename:str
+    filename:str
 )-> list[dict]:
     ''' loads list of dicts from json '''
 
