@@ -1,16 +1,16 @@
 from django.db import models
 
-# Create your models here.
+from myapp.models.dictmixin import DictMixin
 
-class MenuItems(models.Model):
+class MenuItems(models.Model, DictMixin):
     itemname = models.CharField(max_length=200)
     category = models.CharField(max_length=300)
     year = models.IntegerField()
 
-class MenuCategory(models.Model):
+class MenuCategory(models.Model, DictMixin):
     menu_category_name = models.CharField(max_length=200)
 
-class Menu(models.Model):
+class Menu(models.Model, DictMixin):
     menu_item = models.CharField(max_length=200)
     price = models.IntegerField(null=False)
     category_id = models.ForeignKey(
@@ -30,7 +30,7 @@ class Menu(models.Model):
             category=self.category_id.menu_category_name,
         )
 
-class Customer(models.Model):
+class Customer(models.Model, DictMixin):
     name = models.CharField(max_length=200)
     reservation_day = models.CharField(max_length=20)
     seats = models.IntegerField()
@@ -38,21 +38,21 @@ class Customer(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    def dict(self):
-        return dict(
-            name=self.name, 
-            reservation_day=self.reservation_day,
-            seats=self.seats,
-        )
+    # def dict(self):
+    #     return dict(
+    #         name=self.name, 
+    #         reservation_day=self.reservation_day,
+    #         seats=self.seats,
+    #     )
 
-class Logger(models.Model):
+class Logger(models.Model, DictMixin):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     time_log = models.TimeField(help_text='enter exact time')
 
-    def dict(self):
-        return dict(
-            first_name=self.first_name, 
-            last_name=self.last_name, 
-            time_log=self.time_log, 
-        )
+    # def dict(self):
+    #     return dict(
+    #         first_name=self.first_name, 
+    #         last_name=self.last_name, 
+    #         time_log=self.time_log, 
+    #     )

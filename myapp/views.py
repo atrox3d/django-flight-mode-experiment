@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.core import serializers
 
 from myapp.forms import InputForm, LogForm
-from myapp.helpers.testing import request2dict
+from myapp.helpers.testing import request2dict, bordered
 
 
 # Create your views here.
@@ -55,6 +55,8 @@ def dishes(request:HttpRequest, dish:str):
 def menu(request:HttpRequest, dish:str):
     menuitem = models.Menu.objects.filter(menu_item=dish).first()
     bordered(menuitem)
+    bordered(menuitem.fieldnames())
+    bordered(menuitem.dict())
 
     # needs queryset, no first()
     # data = serializers.serialize('json', menuitem)
