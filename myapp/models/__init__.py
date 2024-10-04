@@ -5,6 +5,7 @@ from myapp.models.menuitems import MenuItems
 from myapp.models.menucategory import MenuCategory
 from myapp.models.menu import Menu
 from myapp.models.customer import Customer
+from myapp.models.logger import Logger
 
     # def dict(self):
     #     return dict(
@@ -13,10 +14,10 @@ from myapp.models.customer import Customer
     #         seats=self.seats,
     #     )
 
-class Logger(models.Model, DictMixin):
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    time_log = models.TimeField(help_text='enter exact time')
+# class Logger(models.Model, DictMixin):
+#     first_name = models.CharField(max_length=200)
+#     last_name = models.CharField(max_length=200)
+#     time_log = models.TimeField(help_text='enter exact time')
 
     # def dict(self):
     #     return dict(
