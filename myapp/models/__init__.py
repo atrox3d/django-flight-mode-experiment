@@ -4,14 +4,7 @@ from myapp.models.dictmixin import DictMixin
 from myapp.models.menuitems import MenuItems
 from myapp.models.menucategory import MenuCategory
 from myapp.models.menu import Menu
-
-class Customer(models.Model, DictMixin):
-    name = models.CharField(max_length=200)
-    reservation_day = models.CharField(max_length=20)
-    seats = models.IntegerField()
-
-    def __str__(self) -> str:
-        return self.name
+from myapp.models.customer import Customer
 
     # def dict(self):
     #     return dict(

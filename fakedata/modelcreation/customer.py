@@ -1,7 +1,7 @@
 import logging
 import random
 
-from myapp import models
+from myapp.models import Customer
 import myapp.models.Menu
 
 logger = logging.getLogger(__name__)
@@ -14,7 +14,7 @@ def create_customers(
 ) -> list[myapp.models.Menu.Menu]:
     items = []
     for customer in customers:
-        item = models.Customer(
+        item = Customer.Customer(
             name = customer['name'],
             reservation_day = customer['reservation_day'],
             seats = customer['seats']

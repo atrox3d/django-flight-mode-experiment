@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 
+import myapp.models.Customer
 import myapp.models.Menu
 import myapp.models.MenuCategory
 import myapp.models.MenuItems
@@ -38,7 +39,7 @@ def create_initial_data(
             myapp.models.Menu.Menu, 
             myapp.models.MenuCategory.MenuCategory, 
             myapp.models.MenuItems.MenuItems,
-            models.Customer,
+            myapp.models.Customer.Customer,
             models.Logger
         )
     
@@ -48,5 +49,5 @@ def create_initial_data(
     menu_items = menu.create_menu(data)
 
     data = serializer.load_from_json(json_customers_path)
-    customers = generic.create_objects(data, models.Customer)
+    customers = generic.create_objects(data, myapp.models.Customer.Customer)
 
