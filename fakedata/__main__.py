@@ -25,7 +25,7 @@ if __name__ == '__main__':
     django.setup()
 
     logger.info(f'importing data.data_creation')
-    from fakedata.creator import data
-
+    # from fakedata.creator import data
+    import fakedata.creator.data
     logger.info(f'calling create_initial_data')
-    data.create_initial_data()
+    fakedata.creator.data.create_initial_data()
