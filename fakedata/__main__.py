@@ -18,6 +18,7 @@ if __name__ == '__main__':
     sys.path.insert(0, PROJECT_PATH)
 
     logger.info(f'setting DJANGO_SETTINGS_MODULE')
+    logger.info(f'current DJANGO_SETTINGS_MODULE: {os.environ.get('DJANGO_SETTINGS_MODULE')}')
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'flightmode.settings')
 
     logger.info(f'setting up django')
