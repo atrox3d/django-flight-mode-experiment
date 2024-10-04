@@ -9,3 +9,4 @@ class DictMixin:
             name:getattr(self, name) for name in self.fieldnames()
             if name not in excluded
         }
+

@@ -1,8 +1,9 @@
 from django.contrib import admin
 
+
 # Register your models here.
 
-from .models import Customer, Menu, MenuCategory, MenuItems, Logger
+from .models import Customer, Menu, MenuCategory, Logger, MenuItems
 
 admin.site.register(Customer)
 admin.site.register(Menu)

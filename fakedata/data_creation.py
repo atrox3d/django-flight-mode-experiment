@@ -1,6 +1,8 @@
 import logging
 from pathlib import Path
 
+import myapp.models.MenuItems
+
 
 from . import db
 from . import serializer
@@ -33,7 +35,7 @@ def create_initial_data(
         db.delete_initial_data(
             models.Menu, 
             models.MenuCategory, 
-            models.MenuItems,
+            myapp.models.MenuItems.MenuItems,
             models.Customer,
             models.Logger
         )
