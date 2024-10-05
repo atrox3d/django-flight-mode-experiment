@@ -9,3 +9,6 @@ class Reservation(models.Model, DictMixin):
     time = models.TimeField()
     count = models.IntegerField()
     notes = models.CharField(max_length=300, blank=True)
+
+    def __str__(self) -> str:
+        return f'{self.name}'
