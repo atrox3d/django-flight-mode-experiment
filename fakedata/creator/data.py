@@ -1,6 +1,8 @@
 import logging
 from pathlib import Path
 
+from django.contrib.auth.models import User
+
 from .. import db
 from .. import loader
 from . import menu
@@ -16,7 +18,8 @@ JSON = Path(__file__).parent.parent / 'json'
 
 def create_initial_data(
         json_menu_path:str=f'{JSON}/menu.json', 
-        json_customers_path:str=f'{JSON}/customers.json', 
+        json_customers_path:str=f'{JSON}/customers.json',
+        json_users_path:str=f'{JSON}/users.json',
         reset_db=True,
         delete_existing=True,
 ) -> None:
@@ -38,11 +41,14 @@ def create_initial_data(
             myapp.models.Logger
         )
     
-    data = loader.load_from_json(json_menu_path)
-    categories = menu.get_categories_from_menu(data)
+    menu_data = loader.load_from_json(json_menu_path)
+    categories = menu.get_categories_from_menu(menu_data)
     menu_categories = menu.create_menu_categories(*categories)
-    menu_items = menu.create_menu(data)
+    menu_items = menu.create_menu(menu_data)
 
-    data = loader.load_from_json(json_customers_path)
-    customers = generic.create_objects(data, myapp.models.Customer)
+    customers_data = loader.load_from_json(json_customers_path)
+    customers = generic.create_objects(customers_data, myapp.models.Customer)
+
+    users_data = loader.load_from_json(json_users_path)
+    user = generic.create_objects(users_data, User)
 

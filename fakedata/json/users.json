@@ -1,0 +1,14 @@
+[
+    {
+        "password": "pbkdf2_sha256$870000$d7wFPBsE6esQInVcS714Zp$J3JJbgtcAIoeYXCnizg9Yld4YcF1chcgSlRnqAhHBpQ=",
+        "last_login": null,
+        "is_superuser": "1",
+        "username": "admin",
+        "last_name": "",
+        "email": "",
+        "is_staff": "1",
+        "is_active": "1",
+        "date_joined": "2024-10-05 06:27:01.233313",
+        "first_name": ""
+    }
+]
