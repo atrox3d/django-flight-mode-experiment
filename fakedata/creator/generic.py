@@ -11,6 +11,7 @@ def create_objects(
 
     objects = []
     for item in data:
+        logger.info(f'creating object {item}')
         object = model(**item)
         object.save()
         objects.append(object)

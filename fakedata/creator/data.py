@@ -50,5 +50,10 @@ def create_initial_data(
     customers = generic.create_objects(customers_data, myapp.models.Customer)
 
     users_data = loader.load_from_json(json_users_path)
-    user = generic.create_objects(users_data, User)
+    users = generic.create_objects(users_data, User)
+    
+    # admin = User.objects.create_superuser('admin', 'admin@admin', 'admin')
+    # admin.is_superuser = True
+    # admin.is_staff = True
+    # admin.save()
 
